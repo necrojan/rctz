@@ -4,6 +4,8 @@ import "./App.css";
 import api from "./components/api";
 import Collection from "./components/collection";
 import Cuisines from "./components/cuisines";
+import Jumbotron from "./components/jumbotron";
+import Footer from "./components/footer";
 
 class App extends Component {
   constructor(props) {
@@ -42,21 +44,26 @@ class App extends Component {
   }
 
   cuisines(params) {
-    api.get('/cuisines', { params: params })
-    .then(res => {
-      this.setState({ cuisines: res.data.cuisines });
-      console.log(res.data.cuisines);
-      
-    })
-    .catch(e => console.log(e)
-    );
+    api
+      .get("/cuisines", { params: params })
+      .then(res => {
+        this.setState({ cuisines: res.data.cuisines });
+        console.log(res.data.cuisines);
+      })
+      .catch(e => console.log(e));
   }
 
   render() {
     return (
-      <div className="container">
-        <Collection collections={this.state.collections}>Collection</Collection>
-        <Cuisines cuisines={this.state.cuisines}>Cuisines</Cuisines>
+      <div>
+        <div className="container">
+          <Jumbotron></Jumbotron>
+          <Collection collections={this.state.collections}>
+            Collection
+          </Collection>
+          <Cuisines cuisines={this.state.cuisines}>Cuisines</Cuisines>
+        </div>
+        <Footer></Footer>
       </div>
     );
   }

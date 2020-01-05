@@ -9,7 +9,7 @@ const border = {
 
 const Cuisines = ({ cuisines, children }) => {
   return (
-    <div className="cuisines">
+    <div className="cuisines" style={{marginBottom: '25px'}}>
       <h2>{children}</h2>
       <p>List of cuisines in your place.</p>
       <div className="row">
